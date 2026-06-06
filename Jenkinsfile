@@ -7,12 +7,18 @@ pipeline {
         CONTAINER_NAME = "node-app-container"
         PORT_MAPPING = "3000:3000"
     }
+    // Explicitly tells Jenkins to listen for GitHub webhooks
+    triggers {
+        githubPush()
+    }
 
     stages {
         stage('Checkout Code') {
             steps {
                 // Pulls local files (useful for fully local setups)
-                checkout scm
+                // checkout scm
+                // Explicitly defining the Git SCM tells Jenkins which repo matches the webhook
+                git branch: 'main', url: 'https://github.com/amaity61/local-node-pipeline.git'
             }
         }
 
