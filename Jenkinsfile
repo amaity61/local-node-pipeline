@@ -8,19 +8,19 @@ pipeline {
         PORT_MAPPING = "3000:3000"
     }
     // Explicitly tells Jenkins to listen for GitHub webhooks
-    triggers {
-        githubPush()
-    }
+    // triggers {
+    //     githubPush()
+    // }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                // Pulls local files (useful for fully local setups)
-                // checkout scm
-                // Explicitly defining the Git SCM tells Jenkins which repo matches the webhook
-                git branch: 'main', url: 'https://github.com/amaity61/local-node-pipeline.git'
-            }
-        }
+        // stage('Checkout Code') {
+        //     steps {
+        //         // Pulls local files (useful for fully local setups)
+        //         // checkout scm
+        //         // Explicitly defining the Git SCM tells Jenkins which repo matches the webhook
+        //         // git branch: 'main', url: 'https://github.com/amaity61/local-node-pipeline.git'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
